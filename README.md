@@ -11,7 +11,24 @@ The Android app lets you:
 - Echo Last Message, where the last message sent by the user will be echoed from the recipient end.
 - Offline Support
 
+## DB Schema
+
+![dbSchema.png](https://github.com/avishekdas128/offline-chat-app/assets/43132866/f9d5ac80-0d6b-4967-8af0-cb9493cb93ed)
+
 ## Screenshots
+
+[<img src="https://github.com/avishekdas128/offline-chat-app/assets/43132866/02f11b15-547d-4720-97f6-92de4625e743" align="left"
+width="180"
+hspace="1" vspace="1">](ss1.png)
+[<img src="https://github.com/avishekdas128/offline-chat-app/assets/43132866/e5fca432-0b14-4fcc-9b6f-a60ba5013a0e" align="center"
+width="180"
+hspace="1" vspace="1">](ss2.png)
+[<img src="https://github.com/avishekdas128/offline-chat-app/assets/43132866/02b29270-3efe-46f3-9d76-d0aace9a2565" align="left"
+width="180"
+hspace="1" vspace="1">](ss3.png)
+[<img src="https://github.com/avishekdas128/offline-chat-app/assets/43132866/d8077f30-154f-4609-b20a-5375288cf481" align="left"
+width="180"
+hspace="1" vspace="1">](ss4.png)
 
 
 ## Tech stack
@@ -30,4 +47,5 @@ The Android app lets you:
     - data ~ domain ~ presentation
 - [Glide - Compose](https://bumptech.github.io/glide/int/compose.html) - Loading Images for Jetpack Compose.
 - [ExoPlayer](https://github.com/google/ExoPlayer) - Loading Video Playback
+- [DataStore](https://developer.android.com/jetpack/androidx/releases/datastore) - For handling shared preferences
 - [Room Database](https://developer.android.com/jetpack/androidx/releases/room) - For offline caching of data

@@ -104,12 +104,12 @@ fun MessagesItem(messagesItem: MessagesItem) {
         messagesItem.mediaPath?.let {
             val uri = Uri.parse(it)
             val mediaType = LocalContext.current.getMediaType(uri)
-            if (mediaType.startsWith("image")) {
-                ImageViewer(uri = uri) {
+            if (mediaType.startsWith("video")) {
+                VideoViewer(uri = uri) {
                     showMediaViewer.value = false
                 }
             } else {
-                VideoViewer(uri = uri) {
+                ImageViewer(uri = uri) {
                     showMediaViewer.value = false
                 }
             }

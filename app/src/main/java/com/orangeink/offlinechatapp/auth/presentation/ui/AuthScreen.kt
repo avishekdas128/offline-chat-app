@@ -1,6 +1,5 @@
 package com.orangeink.offlinechatapp.auth.presentation.ui
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -48,68 +47,65 @@ fun AuthScreen(
 
     var accountType by remember { mutableStateOf<AuthType>(AuthType.Register) }
 
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(horizontal = 16.dp)
-    ) {
-        Image(
-            modifier = Modifier
-                .padding(top = 80.dp, bottom = 48.dp)
-                .height(230.dp)
-                .width(210.dp)
-                .align(Alignment.CenterHorizontally),
-            painter = painterResource(id = R.drawable.offline_chat_app_illustration),
-            contentDescription = "login-illustration"
-        )
-        CustomTextField(value = username, hint = "Username", onTextChanged = { username = it })
-        Spacer(modifier = Modifier.height(16.dp))
-        CustomTextField(
-            value = password,
-            hint = "Password",
-            onTextChanged = { password = it },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            visualTransformation = PasswordVisualTransformation()
-        )
-        Spacer(modifier = Modifier.height(48.dp))
-        CustomButton(
-            buttonText = if (accountType == AuthType.Login)
-                "Login"
-            else
-                "Register",
-            onClick = {
-                if (accountType == AuthType.Login)
-                    login(username, password)
-                else
-                    register(username, password)
-            }
-        )
-        Spacer(modifier = Modifier.height(12.dp))
-        Text(
-            text = if (accountType == AuthType.Login)
-                "Don't have an account? Register"
-            else
-                "Already have an account? Login",
-            fontSize = 12.sp,
-            color = Color.Black,
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .clickable {
-                    accountType =
-                        if (accountType == AuthType.Login)
-                            AuthType.Register
-                        else
-                            AuthType.Login
-                }
-                .padding(bottom = 48.dp)
-        )
-    }
-    AnimatedVisibility(visible = isLoading) {
-        Box(
-            modifier = modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .padding(horizontal = 16.dp)
         ) {
-            CircularProgressIndicator()
+            Image(
+                modifier = Modifier
+                    .padding(top = 80.dp, bottom = 48.dp)
+                    .height(230.dp)
+                    .width(210.dp)
+                    .align(Alignment.CenterHorizontally),
+                painter = painterResource(id = R.drawable.offline_chat_app_illustration),
+                contentDescription = "login-illustration"
+            )
+            CustomTextField(value = username, hint = "Username", onTextChanged = { username = it })
+            Spacer(modifier = Modifier.height(16.dp))
+            CustomTextField(
+                value = password,
+                hint = "Password",
+                onTextChanged = { password = it },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                visualTransformation = PasswordVisualTransformation()
+            )
+            Spacer(modifier = Modifier.height(48.dp))
+            CustomButton(
+                buttonText = if (accountType == AuthType.Login)
+                    "Login"
+                else
+                    "Register",
+                onClick = {
+                    if (accountType == AuthType.Login)
+                        login(username, password)
+                    else
+                        register(username, password)
+                }
+            )
+            Spacer(modifier = Modifier.height(12.dp))
+            Text(
+                text = if (accountType == AuthType.Login)
+                    "Don't have an account? Register"
+                else
+                    "Already have an account? Login",
+                fontSize = 12.sp,
+                color = Color.Black,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .clickable {
+                        accountType =
+                            if (accountType == AuthType.Login)
+                                AuthType.Register
+                            else
+                                AuthType.Login
+                    }
+                    .padding(bottom = 48.dp)
+            )
+        }
+        if (isLoading) {
+            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
         }
     }
 }

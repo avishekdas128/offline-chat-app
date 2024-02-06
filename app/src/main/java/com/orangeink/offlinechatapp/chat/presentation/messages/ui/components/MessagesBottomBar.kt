@@ -48,7 +48,8 @@ fun MessagesBottomBar(onSendMessage: (body: String?, mediaPath: String?) -> Unit
     val launcher =
         rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             uri?.let {
-                context.contentResolver.takePersistableUriPermission(
+                context.grantUriPermission(
+                    context.packageName,
                     it,
                     Intent.FLAG_GRANT_READ_URI_PERMISSION
                 )
